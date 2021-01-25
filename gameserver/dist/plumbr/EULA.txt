@@ -1,0 +1,12 @@
+IMPORTANT LEGAL NOTICE TO ALL USERS: the use of this software is governed by
+Plumbr End User License Agreement ("EULA") that you agreed to prior to
+registering for Plumbr account.
+
+The EULA is a legal agreement between you (either an individual or a single
+entity) and OÜ Plumbr. By purchasing the license certificate or installing,
+copying, downloading or otherwise using the software you have agreed that the
+EULA is enforceable like any written agreement signed by you. If you do not
+agree to the terms and conditions of the EULA, you may not install, copy,
+download or otherwise use the software.
+
+You can always review the EULA at: http://plumbr.eu/eula

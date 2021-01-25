@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jts_share" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.lib.classpath">
+    <pathelement location="${basedir}/lib/HikariCP-2.4.5.jar"/>
+    <pathelement location="${basedir}/lib/akka-actor_2.10-2.3.6.jar"/>
+    <pathelement location="${basedir}/lib/annotations-3.0.1.jar"/>
+    <pathelement location="${basedir}/lib/atlassian-util-concurrent-4.0.0.jar"/>
+    <pathelement location="${basedir}/lib/attoparser-2.0.0.BETA05.jar"/>
+    <pathelement location="${basedir}/lib/commons-io-2.4.jar"/>
+    <pathelement location="${basedir}/lib/commons-lang3-3.4.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging-1.1.jar"/>
+    <pathelement location="${basedir}/lib/commons-math3-3.6.1.jar"/>
+    <pathelement location="${basedir}/lib/config-1.2.1.jar"/>
+    <pathelement location="${basedir}/lib/disruptor-3.3.4.jar"/>
+    <pathelement location="${basedir}/lib/flyway-core-4.0.jar"/>
+    <pathelement location="${basedir}/lib/guava-19.0.jar"/>
+    <pathelement location="${basedir}/lib/htmlcompressor-1.5.2.jar"/>
+    <pathelement location="${basedir}/lib/infinispan-embedded-8.2.1.Final.jar"/>
+    <pathelement location="${basedir}/lib/jackson-annotations-2.7.0.jar"/>
+    <pathelement location="${basedir}/lib/jackson-core-2.7.3.jar"/>
+    <pathelement location="${basedir}/lib/jackson-databind-2.7.3.jar"/>
+    <pathelement location="${basedir}/lib/javassist-3.20.0-GA.jar"/>
+    <pathelement location="${basedir}/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+    <pathelement location="${basedir}/lib/jcip-annotations-1.0.jar"/>
+    <pathelement location="${basedir}/lib/jdk.tools-jdk1.8.0.jar"/>
+    <pathelement location="${basedir}/lib/jdom2-2.0.6.jar"/>
+    <pathelement location="${basedir}/lib/jsr305-3.0.1.jar"/>
+    <pathelement location="${basedir}/lib/junit-3.8.1.jar"/>
+    <pathelement location="${basedir}/lib/log4j-api-2.5.jar"/>
+    <pathelement location="${basedir}/lib/log4j-core-2.5.jar"/>
+    <pathelement location="${basedir}/lib/log4j-slf4j-impl-2.5.jar"/>
+    <pathelement location="${basedir}/lib/mysql-connector-java-5.1.38.jar"/>
+    <pathelement location="${basedir}/lib/netty-all-4.0.36.Final.jar"/>
+    <pathelement location="${basedir}/lib/ognl-3.1.2.jar"/>
+    <pathelement location="${basedir}/lib/quartz-2.2.2.jar"/>
+    <pathelement location="${basedir}/lib/reflections-0.9.10.jar"/>
+    <pathelement location="${basedir}/lib/scala-library-2.10.4.jar"/>
+    <pathelement location="${basedir}/lib/servlet-api-2.3.jar"/>
+    <pathelement location="${basedir}/lib/slf4j-api-1.7.21.jar"/>
+    <pathelement location="${basedir}/lib/smrt-core.jar"/>
+    <pathelement location="${basedir}/lib/thymeleaf-3.0.0.BETA02.jar"/>
+    <pathelement location="${basedir}/lib/trove4j-3.0.3.jar"/>
+    <pathelement location="${basedir}/lib/unbescape-1.1.2.RELEASE.jar"/>
+    <pathelement location="${basedir}/lib/ws-commons-util-1.0.2.jar"/>
+    <pathelement location="${basedir}/lib/xmlrpc-common-3.1.3.jar"/>
+    <pathelement location="${basedir}/lib/xmlrpc-server-3.1.3.jar"/>
+  </path>
+  
+  <!-- Modules -->
+    
+  <import file="${basedir}/commons/src/main/module_commons.xml"/>
+  
+  <import file="${basedir}/authserver/src/main/module_auth.xml"/>
+  
+  <import file="${basedir}/gameserver/src/main/module_game.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.commons, clean.module.auth, clean.module.game" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.commons, compile.module.auth, compile.module.game" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
